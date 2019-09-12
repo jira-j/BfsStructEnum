@@ -6,13 +6,16 @@ Then, it enumerates chemical compounds without cycle except for substructures de
 
 ## Requirement:
 - Install boost library
+
 for ubuntu
 ```
 sudo apt-get install libboost-program-options-dev
 ```
 - Install openbabel library
+
 Please follow this [instruction](https://openbabel.org/wiki/CMake)
 - Install libcurl
+
 For ubuntu
 ```
 sudo apt-get install libcurl4-openssl-dev
