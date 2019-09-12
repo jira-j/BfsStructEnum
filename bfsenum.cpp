@@ -7,6 +7,8 @@
 #include "bfsenum.hpp"
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
+#include <openbabel/obiter.h>
+#include <openbabel/bond.h>
 
 #include <time.h>
 #include <curl/curl.h>
@@ -46,11 +48,10 @@ bool MolToSmiles(string imol, string &smi){
   ob.ReadFile(&mol, imol);
   
   // convert kekule representation to aromatic bond
-  OpenBabel::OBBond *bond;
-  vector<OpenBabel::OBEdgeBase*>::iterator it;
-  for( bond = mol.BeginBond(it); bond; bond = mol.NextBond(it) ){
+  OpenBabel::OBBond bond;
+    FOR_BONDS_OF_MOL(bond, mol){
     if( bond->IsAromatic() ){
-      bond->SetBO(4);
+      bond->SetBondOrder(4);
     }
   }
 
